@@ -1,0 +1,11 @@
+?- aggregationInterval(OP, ROLE, AGGRS).
+OP = 'PerformDataTransmissionOperation Energiebeauftragter.getFineGrainedData.transmit (_tNJj86ZGEeqY44iaA32xXw) - AC n/a',
+ROLE = 'EnumCharacteristicLiteral Energiebeauftragter (_ZuBggKZAEeqY44iaA32xXw)',
+AGGRS = ['EnumCharacteristicLiteral MINUTE (_YaJ4IJn7EeqbD7MI1AForg)'] ;
+OP = 'PerformDataTransmissionOperation InterneAbrechnung.getMonthlyData.transmit (_57XGg6ZHEeqY44iaA32xXw) - AC n/a',
+ROLE = 'EnumCharacteristicLiteral Interne Abrechnung (_c8C7sKZAEeqY44iaA32xXw)',
+AGGRS = ['EnumCharacteristicLiteral MONTH (_cxqq8Jn7EeqbD7MI1AForg)'] ;
+OP = 'PerformDataTransmissionOperation Wartungstechniker.getFineGrainedData.transmit (_xKUHo6ZHEeqY44iaA32xXw) - AC n/a',
+ROLE = 'EnumCharacteristicLiteral Wartungstechniker (_WCwIoKZAEeqY44iaA32xXw)',
+AGGRS = ['EnumCharacteristicLiteral MINUTE (_YaJ4IJn7EeqbD7MI1AForg)'] ;
+false.
