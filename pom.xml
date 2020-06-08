@@ -6,7 +6,8 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.6.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
+		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.palladiosimulator.trust.enforcer</groupId>
 	<artifactId>decision</artifactId>
@@ -25,9 +26,9 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-    		<groupId>com.google.zxing</groupId>
-    		<artifactId>core</artifactId>
-    		<version>3.4.0</version>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.4.0</version>
 		</dependency>
 
 		<dependency>
@@ -50,11 +51,52 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-    			<groupId>org.apache.maven.plugins</groupId>
-    			<artifactId>maven-compiler-plugin</artifactId>
-    			<configuration>
-        			<compilerVersion>${java.version}</compilerVersion>
-    			</configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<compilerVersion>${java.version}</compilerVersion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>2.3.0</version>
+				<executions>
+					<execution>
+						<id>create-docker-tar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>buildTar</goal>
+						</goals>
+						<configuration>
+							<from>
+								<image>openjdk:11-jre-slim</image>
+							</from>
+							<to>
+								<image>trust40-evaluation-decisionpoint</image>
+							</to>
+							<extraDirectories>
+								<paths>
+									<path>
+										<from>models/results</from>
+										<into>/models/</into>
+									</path>
+								</paths>
+							</extraDirectories>
+							<container>
+								<args>
+									<arg>--path.typemapping=models/mappingTable.csv</arg>
+									<arg>--path.resultmapping=models/characteristics.csv</arg>
+									<arg>--path.rolemapping=models/roles.csv</arg>
+								</args>
+								<ports>
+									<port>8080</port>
+								</ports>
+							</container>
+						</configuration>
+					</execution>
+				</executions>
+
 			</plugin>
 		</plugins>
 	</build>
