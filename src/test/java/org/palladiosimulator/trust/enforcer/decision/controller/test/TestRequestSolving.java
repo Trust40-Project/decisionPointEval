@@ -1,7 +1,5 @@
 package org.palladiosimulator.trust.enforcer.decision.controller.test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -12,14 +10,11 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.palladiosimulator.trust.enforcer.decision.data.PrivacyLevel;
 import org.palladiosimulator.trust.enforcer.decision.validation.DesignTimeDecisionMaker;
 import org.palladiosimulator.trust.enforcer.decision.validation.DesignTimeDecisionMakerImpl;
 
@@ -52,7 +47,7 @@ public class TestRequestSolving {
 			writerRoles.write("foreman;highly_sensitive\n");
 			writerRoles.write("worker;public\n");
 			writerRoles.close();
-			decision = new DesignTimeDecisionMakerImpl(privacyConfig.getFileName().toString(),mappingConfig.getFileName().toString(),roleConfig.getFileName().toString());
+			decision = new DesignTimeDecisionMakerImpl<>(PrivacyLevel.class, privacyConfig.getFileName().toString(),mappingConfig.getFileName().toString(),roleConfig.getFileName().toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("IO-Error");

@@ -13,7 +13,8 @@ import java.nio.file.Paths;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.palladiosimulator.trust.enforcer.decision.io.PrivacyLoader;
+import org.palladiosimulator.trust.enforcer.decision.data.PrivacyLevel;
+import org.palladiosimulator.trust.enforcer.decision.io.CharacteristicLoader;
 
 class TestPrivacyLoader {
 	static Path t;
@@ -33,8 +34,7 @@ class TestPrivacyLoader {
 	@Test
 	void testPrivacyTableCreation() {
 		try {
-			boolean test = TestHelper.getPrivacyTable().equals(new PrivacyLoader(t.toString()).getPrivacyTable());
-            assertEquals(TestHelper.getPrivacyTable(),new PrivacyLoader(t.toString()).getPrivacyTable(),"Tests Privacy Table");
+            assertEquals(TestHelper.getPrivacyTable(),new CharacteristicLoader<>(PrivacyLevel.class, t.toString()).getCharacteristicTable(),"Tests Privacy Table");
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail("IO-Error");

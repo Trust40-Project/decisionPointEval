@@ -15,7 +15,7 @@ import java.util.Map;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.palladiosimulator.trust.enforcer.decision.io.StringMapping;
+import org.palladiosimulator.trust.enforcer.decision.io.RoleMapping;
 
 public class TestDataTypeMapping {
     static Path t;
@@ -35,7 +35,7 @@ public class TestDataTypeMapping {
     @Test
     void testLoadMapping() {
         try {
-            Map<String, String> mapping = new StringMapping(t.toString()).getTypeMapping();
+            Map<String, String> mapping = new RoleMapping(t.toString()).getTypeMapping();
             assertAll("test Privacylevel",
                     ()-> assertEquals("foreman",mapping.get("A-foreman")),
                     ()-> assertEquals("worker",mapping.get("A-worker-001")),

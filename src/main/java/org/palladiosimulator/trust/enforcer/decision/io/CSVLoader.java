@@ -1,24 +1,20 @@
 package org.palladiosimulator.trust.enforcer.decision.io;
 
-
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 
 /**
  *
  */
 public abstract class CSVLoader {
-    private final String PATH_PRIVACY_LEVEL;
     private static final char SEPERATOR_CHAR = ';';
+    private final String csvPath;
 
     public CSVLoader(String path) {
-        PATH_PRIVACY_LEVEL = path;
+        csvPath = path;
     }
 
-    
     /**
      * Method to load
      *
@@ -28,9 +24,9 @@ public abstract class CSVLoader {
     protected String[][] loadCSVFile(int coloumns) throws IOException {
         if (coloumns < 1)
             throw new IllegalArgumentException("The number of coloumns needs to be bigger than 1");
-        return Files.lines(Paths.get(PATH_PRIVACY_LEVEL)).map(e -> e.split(SEPERATOR_CHAR + ""))
-                .toArray(String[][]::new);
+        return Files.lines(Paths.get(csvPath))
+            .map(e -> e.split(SEPERATOR_CHAR + ""))
+            .toArray(String[][]::new);
     }
-
 
 }
