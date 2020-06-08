@@ -25,6 +25,7 @@ public abstract class CSVLoader {
         if (coloumns < 1)
             throw new IllegalArgumentException("The number of coloumns needs to be bigger than 1");
         return Files.lines(Paths.get(csvPath))
+            .filter(e -> !e.startsWith("%"))
             .map(e -> e.split(SEPERATOR_CHAR + ""))
             .toArray(String[][]::new);
     }

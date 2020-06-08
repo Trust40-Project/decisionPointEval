@@ -1,4 +1,4 @@
-Subject(role);Action;Object(role);CharacteristicValue
+%Subject(role);Action;Object(role);CharacteristicValue
 Energiebeauftragter;getFineGrainedData;SensorReadings;minute
 Interne Abrechnung;getMonthlyData;SensorReadings;month
 Wartungstechniker;getFineGrainedData;SensorReadings;minute
